@@ -1,4 +1,4 @@
 apiVersion: v1
 description: A Helm chart for Kubernetes
-name: kubeplay
+name: kubesim_lte
 version: 0.1.0
