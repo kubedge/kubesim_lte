@@ -1,5 +1,5 @@
 FROM scratch
 ADD kubesim_lte/ca-certificates.crt /etc/ssl/certs/
-ADD kubesim_lte/goserv /goserv
+ADD kubesim_lte/goclient /goclient
 EXPOSE 8080
-CMD ["/goserv"]
+CMD ["/goclient", "network", "WiFi"]
