@@ -5,7 +5,7 @@ metadata:
 data:
   config: |-
     ---
-    product_name: epc
+    product_name: lte
     product_type: 4g
     product_family: ran
     product_release: test

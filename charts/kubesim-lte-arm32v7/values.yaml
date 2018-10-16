@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 replicaCount: 1
+nameOverride: kubesim-lte
+nodeSelector:
+  kubedgeNodeType: ran
 image:
   repository: hack4easy/kubesim_lte-arm32v7
   tag: latest
