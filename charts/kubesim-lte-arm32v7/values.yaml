@@ -4,8 +4,8 @@
 replicaCount: 1
 image:
   repository: hack4easy/kubesim_lte-arm32v7
-  tag: 0.1.0
-  pullPolicy: IfNotPresent
+  tag: latest
+  pullPolicy: Always
 service:
   name: kubesim-lte
   type: NodePort
