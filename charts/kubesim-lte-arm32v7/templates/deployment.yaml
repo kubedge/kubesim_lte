@@ -16,19 +16,29 @@ spec:
         release: {{ .Release.Name }}
     spec:
       containers:
+        - name: side-{{ .Chart.Name }}
+          image: "{{ .Values.image.healthRepository }}:{{ .Values.image.healthTag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.healthPort }}
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: {{ .Values.service.healthPort }}
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: {{ .Values.service.healthPort }}
+        - name: side-{{ .Chart.Name }}
+          image: "{{ .Values.image.healthRepository }}:{{ .Values.image.healthTag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.healthPort }}
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.internalPort }}
-          livenessProbe:
-            httpGet:
-              path: /
-              port: {{ .Values.service.internalPort }}
-          readinessProbe:
-            httpGet:
-              path: /
-              port: {{ .Values.service.internalPort }}
           volumeMounts:
             - name: kubesim-lte-etc
               mountPath: /etc/kubedge/kubesim_conf.yaml
