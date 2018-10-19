@@ -15,7 +15,7 @@ jobs:
       - export DHUBREPO=$DOCKER_NAMESPACE/kubesim_lte-amd64
       - export VERSION=0.1.0
       - cd kubesim_lte
-      - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o goserv .
+      - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o goclient .
       - cd ..
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t $DHUBREPO:$VERSION -f images/kubesim_lte/Dockerfile .
@@ -27,6 +27,6 @@ jobs:
       script:
       - export DHUBREPO=$DOCKER_NAMESPACE/kubesim_lte-amd64
       - export VERSION=0.1.0
-      - docker run -d -p 127.0.0.1:8080:8080 --name hello $DHUBREPO:$VERSION
+      - docker run -d -p 127.0.0.1:8080:80 --name hello $DHUBREPO:$VERSION
       - docker ps | grep -q hello
-      - curl -vsf 'http://127.0.0.1:8080/index.html' &> /dev/stdout
+      # - curl -vsf 'http://127.0.0.1:8080/index.html' &> /dev/stdout

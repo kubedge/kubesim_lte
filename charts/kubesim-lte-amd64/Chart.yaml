@@ -1,4 +1,4 @@
 apiVersion: v1
-description: Kubedge LTE Simulator
+description: A Helm chart for Kubedge Simulator
 name: kubesim-lte-amd64
 version: 0.1.0

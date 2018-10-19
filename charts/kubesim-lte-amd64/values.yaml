@@ -1,16 +1,22 @@
-# Default values for kubedgesim-lte chart.
+# Default values for kuplay-chart.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 replicaCount: 1
+nameOverride: kubesim-lte
+nodeSelector:
+  kubedgeNodeType: lte-ran
 image:
   repository: hack4easy/kubesim_lte-amd64
-  tag: 0.1.0
-  pullPolicy: IfNotPresent
+  tag: latest
+  pullPolicy: Always
+  healthRepository: hack4easy/kubesim_health-amd64
+  healthTag: latest
 service:
   name: kubesim-lte
   type: NodePort
   externalPort: 8005
   internalPort: 8080
+  healthPort: 8081
 ingress:
   enabled: false
   # Used to create an Ingress record.
