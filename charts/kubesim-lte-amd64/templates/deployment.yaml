@@ -75,6 +75,7 @@ spec:
     {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
+    {{- end }}
       volumes:
         - name: kubesim-lte-etc
           configMap:
@@ -85,4 +86,3 @@ spec:
         - name: kubedge
           hostPath:
             path: /etc/kubedge
-    {{- end }}
