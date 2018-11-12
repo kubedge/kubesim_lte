@@ -55,7 +55,6 @@ func main() {
 		SIM_NAME, conf.Product_name, conf.Product_type, conf.Product_family, conf.Product_release, conf.Feature_set1, conf.Feature_set2)
 
 	var conn connected.Connecteddata
-	var message string
 
 	if !SIMPLE_HTTP_SERVER {
 		sim_message("Monitoring UE Connection")
@@ -63,9 +62,11 @@ func main() {
 			conn.Readconnectvalues(SIM_NAME, SIM_CONNECTED_UE_FILE)
 			log.Printf("%s: Connected UEs: %s", SIM_NAME, conn.Connected)
 
-			message = strings.Join(conn.Connected, ",")
-			log.Printf("%s: Message to send: %s", SIM_NAME, message)
-			client.Client(SIM_NAME, demotype, message)
+			imsi = strings.Join(conn.Connected, ",")
+                        for index,message := range conf.Feature_set1 {
+			    log.Printf("%s: Message to send: %s %s", SIM_NAME, message, imsi)
+			    client.Client(SIM_NAME, demotype, imsi)
+                        }
 
 			time.Sleep(15 * time.Second) //every 15 seconds
 		}
