@@ -62,7 +62,7 @@ func main() {
 			conn.Readconnectvalues(SIM_NAME, SIM_CONNECTED_UE_FILE)
 			log.Printf("%s: Connected UEs: %s", SIM_NAME, conn.Connected)
 
-			imsi = strings.Join(conn.Connected, ",")
+			imsi := strings.Join(conn.Connected, ",")
                         for index,message := range conf.Feature_set1 {
 			    log.Printf("%s: Message to send: %s %s", SIM_NAME, message, imsi)
 			    client.Client(SIM_NAME, demotype, imsi)
