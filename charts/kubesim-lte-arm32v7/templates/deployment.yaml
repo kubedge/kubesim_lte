@@ -32,7 +32,7 @@ spec:
         release: {{ .Release.Name }}
     spec:
       containers:
-        - name: config
+        - name: configapi
           image: "{{ .Values.image.healthRepository }}:{{ .Values.image.healthTag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
