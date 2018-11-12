@@ -64,7 +64,7 @@ func main() {
 
 			imsi := strings.Join(conn.Connected, ",")
                         for index,message := range conf.Feature_set1 {
-			    log.Printf("%s: Message %s to send: %s %s", SIM_NAME, index, message, imsi)
+			    log.Printf("%s: Message %d to send: %s %s", SIM_NAME, index, message, imsi)
 			    client.Client(SIM_NAME, message, imsi)
                         }
 
