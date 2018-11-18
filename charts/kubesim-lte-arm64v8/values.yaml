@@ -21,15 +21,15 @@ nodeSelector:
   kubedgeNodeType: lte-ran
 image:
   # main container
-  repository: hack4easy/kubesim_lte-arm32v7
+  repository: hack4easy/kubesim_lte-arm64v8
   tag: latest
   pullPolicy: IfNotPresent
   # configapi container
-  healthRepository: hack4easy/kubesim_health-arm32v7
+  healthRepository: hack4easy/kubesim_health-arm64v8
   healthTag: latest
-  # blinkt container
-  blinktRepository: kubedge1/kubesim_blinkt-arm32v7
-  blinktTag: latest
+  # arpscan container
+  arpscanRepository: hack4easy/arpscan-arm64v8
+  arpscanTag: latest
 kubedge:
   ran_interface: eth0
 service:
@@ -38,7 +38,7 @@ service:
   externalPort: 8005
   internalPort: 8080
   healthPort: 8081
-  blinktPort: 8082
+  arpscanPort: 8082
 ingress:
   enabled: false
   # Used to create an Ingress record.
