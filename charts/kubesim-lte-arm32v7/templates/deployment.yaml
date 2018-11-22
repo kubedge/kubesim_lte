@@ -45,6 +45,19 @@ spec:
             httpGet:
               path: /readiness
               port: {{ .Values.service.healthPort }}
+        - name: arpscan
+          image: "{{ .Values.image.arpscanRepository }}:{{ .Values.image.arpscanTag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["/bin/arpscan"]
+          args: ["{{ .Values.kubedge.ran_interface }}"]
+          ports:
+            - containerPort: {{ .Values.service.arpscanPort }}
+          securityContext:
+             privileged: true
+             allowPrivilegeEscalation: true
+          volumeMounts:
+            - name: kubedge
+              mountPath: /etc/kubedge
         - name: main
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
