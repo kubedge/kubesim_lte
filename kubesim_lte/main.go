@@ -65,7 +65,7 @@ func main() {
 			imsi := strings.Join(conn.Connected, ",")
                         for index,message := range conf.Feature_set1 {
 			    log.Printf("%s: Message %d to send: %s %s", SIM_NAME, index, message, imsi)
-			    client.Client(SIM_NAME, message, imsi)
+			    client.Client(SIM_NAME, conf, message, imsi)
                         }
 
 			time.Sleep(15 * time.Second) //every 15 seconds
