@@ -26,7 +26,7 @@ data:
     product_family: ran
     product_release: test
     kubedge_server_port: ":50051"
-    kubedge_server_address: "192.168.2.101:30180"
+    kubedge_server_address: "10.20.122.11:30180"
     feature_set1:
     - ENB_RRC_CONN_SETUP
     - ENB_S1_SIG_CONN_SETUP
