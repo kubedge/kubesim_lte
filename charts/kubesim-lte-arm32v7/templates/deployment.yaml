@@ -46,7 +46,7 @@ spec:
               path: /readiness
               port: {{ .Values.service.healthPort }}
         - name: blinkt
-          image: "{{ .Values.image.blinktRepository }}:{{ .Values.image.blinkTag }}"
+          image: "{{ .Values.image.blinktRepository }}:{{ .Values.image.blinktTag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           securityContext:
              privileged: true
@@ -54,7 +54,7 @@ spec:
           ports:
             - containerPort: {{ .Values.service.blinktPort }}
           volumeMounts:
-            - name: kubesim-lte-blink
+            - name: kubesim-lte-blinkt
               mountPath: /etc/kubedge/blinkt_conf.yaml
               subPath: blinkt_conf.yaml
               readOnly: true
