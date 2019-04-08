@@ -1,4 +1,4 @@
-module github.com/kubedge/kubesim_lte/kubesim_lte
+module github.com/kubedge/kubesim_lte
 
 go 1.12
 
