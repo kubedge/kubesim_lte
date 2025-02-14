@@ -21,15 +21,15 @@ nodeSelector:
   kubedgeNodeType: lte-ran
 image:
   # main container
-  repository: hack4easy/kubesim_lte-arm32v7
-  tag: latest
+  repository: hack4easy/kubesim_lte
+  tag: v0.2.20
   pullPolicy: IfNotPresent
   # configapi container
-  healthRepository: hack4easy/kubesim_health-arm32v7
-  healthTag: latest
+  healthRepository: hack4easy/kubesim_health
+  healthTag: 0.2.24
   # blinkt container
-  blinktRepository: kubedge1/kubesim_blinkt-arm32v7
-  blinktTag: latest
+  blinktRepository: kubedge1/kubesim_blinkt
+  blinktTag: 0.2.24
 kubedge:
   ran_interface: eth0
 service:
