@@ -19,6 +19,18 @@ replicaCount: 1
 nameOverride: kubesim-lte
 nodeSelector:
   kubedgeNodeType: lte-ran
+# Blinkt! LED of this simulator.
+#   agent  (default): the pod claims its LED through DRA (driver blinkt.kubedge.io);
+#                     blinkt-operator in agent mode draws it. No sidecar, no privileges.
+#   legacy:           privileged blinkt sidecar with hostPath /etc/kubedge, for
+#                     clusters without the operator.
+blinkt:
+  mode: agent
+  pixel: 6
+  color: [0, 0, 255]
+  intensity: 5
+  algorithm: fixed5
+  deviceClassName: blinkt-pixel.kubedge.io
 image:
   # main container
   repository: hack4easy/kubesim_lte
